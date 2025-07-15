@@ -1,0 +1,418 @@
+/* Sonner Toast Component CSS Module */
+
+/* Base toaster container styles */
+.toaster {
+  --normal-bg: var(--popover);
+  --normal-text: var(--popover-foreground);
+  --normal-border: var(--border);
+  --success-bg: var(--background);
+  --success-text: var(--foreground);
+  --success-border: var(--border);
+  --info-bg: var(--background);
+  --info-text: var(--foreground);
+  --info-border: var(--border);
+  --warning-bg: var(--background);
+  --warning-text: var(--foreground);
+  --warning-border: var(--border);
+  --error-bg: var(--background);
+  --error-text: var(--foreground);
+  --error-border: var(--border);
+}
+
+/* Base toast styles */
+.toast {
+  background-color: var(--normal-bg);
+  color: var(--normal-text);
+  border: 1px solid var(--normal-border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  max-width: 24rem;
+  word-wrap: break-word;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.21, 1.02, 0.73, 1);
+  transform: translateZ(0);
+}
+
+.toast[data-styled="false"] {
+  background-color: var(--normal-bg);
+  color: var(--normal-text);
+  border: 1px solid var(--normal-border);
+}
+
+/* Toast content styles */
+.title {
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0;
+  color: inherit;
+  font-size: 0.875rem;
+}
+
+.description {
+  line-height: 1.4;
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+  margin-top: 0.25rem;
+}
+
+/* Button styles */
+.actionButton {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  border-radius: calc(var(--radius) - 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.actionButton:hover {
+  background-color: color-mix(in oklch, var(--primary), transparent 10%);
+}
+
+.actionButton:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.cancelButton {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+  border: none;
+  border-radius: calc(var(--radius) - 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+}
+
+.cancelButton:hover {
+  background-color: color-mix(in oklch, var(--secondary), transparent 20%);
+}
+
+.cancelButton:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  color: var(--muted-foreground);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.closeButton:hover {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Toast type variants */
+.success {
+  --normal-bg: var(--background);
+  --normal-text: var(--foreground);
+  --normal-border: color-mix(in oklch, var(--chart-2), transparent 50%);
+  border-left: 4px solid var(--chart-2);
+}
+
+.success .title {
+  color: var(--chart-2);
+}
+
+.error {
+  --normal-bg: var(--background);
+  --normal-text: var(--foreground);
+  --normal-border: color-mix(in oklch, var(--destructive), transparent 50%);
+  border-left: 4px solid var(--destructive);
+}
+
+.error .title {
+  color: var(--destructive);
+}
+
+.warning {
+  --normal-bg: var(--background);
+  --normal-text: var(--foreground);
+  --normal-border: color-mix(in oklch, var(--chart-4), transparent 50%);
+  border-left: 4px solid var(--chart-4);
+}
+
+.warning .title {
+  color: var(--chart-4);
+}
+
+.info {
+  --normal-bg: var(--background);
+  --normal-text: var(--foreground);
+  --normal-border: color-mix(in oklch, var(--chart-1), transparent 50%);
+  border-left: 4px solid var(--chart-1);
+}
+
+.info .title {
+  color: var(--chart-1);
+}
+
+.loading {
+  --normal-bg: var(--background);
+  --normal-text: var(--foreground);
+  --normal-border: color-mix(in oklch, var(--muted), transparent 50%);
+  border-left: 4px solid var(--muted-foreground);
+}
+
+.loading .title {
+  color: var(--muted-foreground);
+}
+
+/* Loading spinner animation */
+.loading::before {
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--muted);
+  border-top: 2px solid var(--muted-foreground);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Toast positioning and animations */
+.toast[data-mounted="true"] {
+  animation: slideIn 0.32s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+}
+
+.toast[data-removed="true"] {
+  animation: slideOut 0.2s ease-in forwards;
+}
+
+.toast[data-expanded="false"] {
+  animation: shrink 0.2s ease-in-out forwards;
+}
+
+.toast[data-expanded="true"] {
+  animation: expand 0.2s ease-in-out forwards;
+}
+
+/* Position-specific animations */
+.toast[data-position^="top"] {
+  animation: slideInFromTop 0.32s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+}
+
+.toast[data-position^="bottom"] {
+  animation: slideInFromBottom 0.32s cubic-bezier(0.21, 1.02, 0.73, 1) forwards;
+}
+
+.toast[data-position^="top"][data-removed="true"] {
+  animation: slideOutToTop 0.2s ease-in forwards;
+}
+
+.toast[data-position^="bottom"][data-removed="true"] {
+  animation: slideOutToBottom 0.2s ease-in forwards;
+}
+
+/* Animation keyframes */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToTop {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideOutToBottom {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes expand {
+  from {
+    height: var(--initial-height, auto);
+  }
+  to {
+    height: var(--radix-toast-swipe-end-height, auto);
+  }
+}
+
+@keyframes shrink {
+  from {
+    height: var(--radix-toast-swipe-end-height, auto);
+  }
+  to {
+    height: var(--initial-height, auto);
+  }
+}
+
+/* Swipe gesture support */
+.toast[data-swipe="move"] {
+  transform: translateX(var(--radix-toast-swipe-move-x));
+}
+
+.toast[data-swipe="cancel"] {
+  transform: translateX(0);
+  transition: transform 0.2s ease-out;
+}
+
+.toast[data-swipe="end"] {
+  animation: swipeOut 0.2s ease-out forwards;
+}
+
+@keyframes swipeOut {
+  from {
+    transform: translateX(var(--radix-toast-swipe-end-x));
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .toast {
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.25);
+  }
+  
+  .success {
+    --normal-border: color-mix(in oklch, var(--chart-2), transparent 70%);
+  }
+  
+  .error {
+    --normal-border: color-mix(in oklch, var(--destructive), transparent 70%);
+  }
+  
+  .warning {
+    --normal-border: color-mix(in oklch, var(--chart-4), transparent 70%);
+  }
+  
+  .info {
+    --normal-border: color-mix(in oklch, var(--chart-1), transparent 70%);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .toast {
+    max-width: calc(100vw - 2rem);
+    margin: 0 1rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .toast {
+    border-width: 2px;
+  }
+  
+  .success,
+  .error,
+  .warning,
+  .info {
+    border-left-width: 6px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .toast,
+  .toast[data-mounted="true"],
+  .toast[data-removed="true"],
+  .toast[data-expanded="false"],
+  .toast[data-expanded="true"],
+  .toast[data-position^="top"],
+  .toast[data-position^="bottom"],
+  .toast[data-position^="top"][data-removed="true"],
+  .toast[data-position^="bottom"][data-removed="true"] {
+    animation: none;
+    transition: opacity 0.2s ease;
+  }
+  
+  .loading::before {
+    animation: none;
+  }
+}

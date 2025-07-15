@@ -1,0 +1,75 @@
+/* Switch component styles */
+.switch {
+  display: inline-flex;
+  height: 1.15rem;
+  width: 2rem;
+  flex-shrink: 0;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  transition: all 0.15s ease-in-out;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Checked state */
+.switch[data-state="checked"] {
+  background-color: var(--primary);
+}
+
+/* Unchecked state */
+.switch[data-state="unchecked"] {
+  background-color: var(--input);
+}
+
+@media (prefers-color-scheme: dark) {
+  .switch[data-state="unchecked"] {
+    background-color: color-mix(in oklch, var(--input), transparent 20%);
+  }
+}
+
+/* Focus visible state */
+.switch:focus-visible {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring), transparent 50%);
+}
+
+/* Disabled state */
+.switch:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Thumb styles */
+.thumb {
+  pointer-events: none;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 9999px;
+  ring: 0;
+  transition: transform 0.15s ease-in-out;
+  background-color: var(--background);
+}
+
+/* Thumb checked state */
+.switch[data-state="checked"] .thumb {
+  transform: translateX(calc(100% - 2px));
+}
+
+/* Thumb unchecked state */
+.switch[data-state="unchecked"] .thumb {
+  transform: translateX(0);
+}
+
+/* Dark mode thumb colors */
+@media (prefers-color-scheme: dark) {
+  .switch[data-state="unchecked"] .thumb {
+    background-color: var(--foreground);
+  }
+  
+  .switch[data-state="checked"] .thumb {
+    background-color: var(--primary-foreground);
+  }
+}

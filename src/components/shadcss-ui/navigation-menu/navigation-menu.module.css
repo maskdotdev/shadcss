@@ -1,0 +1,395 @@
+/* Navigation Menu Root Styles */
+.navigationMenu {
+  position: relative;
+  display: flex;
+  max-width: max-content;
+  flex: 1 1 0%;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Navigation Menu List Styles */
+.navigationMenuList {
+  display: flex;
+  flex: 1 1 0%;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+/* Navigation Menu Item Styles */
+.navigationMenuItem {
+  position: relative;
+}
+
+/* Navigation Menu Trigger Styles */
+.navigationMenuTrigger {
+  display: inline-flex;
+  height: 2.25rem;
+  width: max-content;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  background-color: var(--background);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  outline: none;
+  transition-property: color, box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.navigationMenuTrigger:hover {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.navigationMenuTrigger:focus {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.navigationMenuTrigger:focus-visible {
+  outline: 1px solid;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+.navigationMenuTrigger:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.navigationMenuTrigger[data-state="open"] {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.navigationMenuTrigger[data-state="open"]:hover {
+  background-color: var(--accent);
+}
+
+.navigationMenuTrigger[data-state="open"]:focus {
+  background-color: var(--accent);
+}
+
+/* Chevron Icon in Trigger */
+.navigationMenuTrigger .chevronIcon {
+  position: relative;
+  top: 1px;
+  margin-left: 0.25rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navigationMenuTrigger[data-state="open"] .chevronIcon {
+  transform: rotate(180deg);
+}
+
+/* Navigation Menu Content Styles */
+.navigationMenuContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem;
+  padding-right: 0.625rem;
+}
+
+@media (min-width: 768px) {
+  .navigationMenuContent {
+    width: auto;
+  }
+}
+
+/* Content Animation States */
+.navigationMenuContent[data-motion^="from-"] {
+  animation-name: fadeIn;
+  animation-duration: 200ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navigationMenuContent[data-motion^="to-"] {
+  animation-name: fadeOut;
+  animation-duration: 200ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navigationMenuContent[data-motion="from-end"] {
+  animation-name: slideInFromRight;
+}
+
+.navigationMenuContent[data-motion="from-start"] {
+  animation-name: slideInFromLeft;
+}
+
+.navigationMenuContent[data-motion="to-end"] {
+  animation-name: slideOutToRight;
+}
+
+.navigationMenuContent[data-motion="to-start"] {
+  animation-name: slideOutToLeft;
+}
+
+/* Content without viewport styling */
+.navigationMenu[data-viewport="false"] .navigationMenuContent {
+  background-color: var(--popover);
+  color: var(--popover-foreground);
+  position: absolute;
+  top: 100%;
+  margin-top: 0.375rem;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.navigationMenu[data-viewport="false"] .navigationMenuContent[data-state="open"] {
+  animation-name: zoomIn, fadeIn;
+  animation-duration: 200ms;
+}
+
+.navigationMenu[data-viewport="false"] .navigationMenuContent[data-state="closed"] {
+  animation-name: zoomOut, fadeOut;
+  animation-duration: 200ms;
+}
+
+/* Navigation Menu Link Styles */
+.navigationMenuLink {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border-radius: 0.125rem;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  outline: none;
+}
+
+.navigationMenuLink:hover {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.navigationMenuLink:focus {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.navigationMenuLink:focus-visible {
+  outline: 1px solid;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+.navigationMenuLink[data-active="true"] {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.navigationMenuLink[data-active="true"]:hover {
+  background-color: var(--accent);
+}
+
+.navigationMenuLink[data-active="true"]:focus {
+  background-color: var(--accent);
+}
+
+/* SVG Icons in Links */
+.navigationMenuLink svg:not([class*='text-']) {
+  color: var(--muted-foreground);
+}
+
+.navigationMenuLink svg:not([class*='size-']) {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Navigation Menu Viewport Styles */
+.navigationMenuViewportContainer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  isolation: isolate;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+}
+
+.navigationMenuViewport {
+  position: relative;
+  margin-top: 0.375rem;
+  height: var(--radix-navigation-menu-viewport-height);
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  border: 1px solid var(--border);
+  background-color: var(--popover);
+  color: var(--popover-foreground);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  transform-origin: top center;
+}
+
+@media (min-width: 768px) {
+  .navigationMenuViewport {
+    width: var(--radix-navigation-menu-viewport-width);
+  }
+}
+
+.navigationMenuViewport[data-state="open"] {
+  animation-name: zoomIn90;
+  animation-duration: 200ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navigationMenuViewport[data-state="closed"] {
+  animation-name: zoomOut95;
+  animation-duration: 200ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Navigation Menu Indicator Styles */
+.navigationMenuIndicator {
+  position: absolute;
+  top: 100%;
+  z-index: 1;
+  display: flex;
+  height: 0.375rem;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.navigationMenuIndicator[data-state="visible"] {
+  animation-name: fadeIn;
+  animation-duration: 200ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navigationMenuIndicator[data-state="hidden"] {
+  animation-name: fadeOut;
+  animation-duration: 200ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navigationMenuIndicatorArrow {
+  position: relative;
+  top: 60%;
+  height: 0.5rem;
+  width: 0.5rem;
+  transform: rotate(45deg);
+  border-top-left-radius: 0.125rem;
+  background-color: var(--border);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(13rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-13rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(13rem);
+  }
+}
+
+@keyframes slideOutToLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-13rem);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes zoomIn90 {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOut95 {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}

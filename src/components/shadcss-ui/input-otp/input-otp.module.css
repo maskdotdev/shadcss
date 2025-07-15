@@ -1,0 +1,121 @@
+/* Input OTP Component CSS Module */
+
+/* Container styles */
+.container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.container:has([disabled]) {
+  opacity: 0.5;
+}
+
+/* Input styles */
+.input:disabled {
+  cursor: not-allowed;
+}
+
+/* Group styles */
+.group {
+  display: flex;
+  align-items: center;
+}
+
+/* Slot styles */
+.slot {
+  position: relative;
+  display: flex;
+  height: 2.25rem;
+  width: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid var(--input);
+  border-bottom: 1px solid var(--input);
+  border-right: 1px solid var(--input);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+/* First slot gets left border and rounded left corners */
+.slot:first-child {
+  border-left: 1px solid var(--input);
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
+
+/* Last slot gets rounded right corners */
+.slot:last-child {
+  border-top-right-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+}
+
+/* Active slot styles */
+.slot[data-active="true"] {
+  z-index: 10;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring), transparent 50%);
+}
+
+/* Invalid state styles */
+.slot[aria-invalid="true"] {
+  border-color: var(--destructive);
+}
+
+.slot[data-active="true"][aria-invalid="true"] {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--destructive), transparent 80%);
+}
+
+/* Caret container */
+.caretContainer {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Caret styles */
+.caret {
+  height: 1rem;
+  width: 1px;
+  background-color: var(--foreground);
+  animation: caret-blink 1000ms ease-in-out infinite;
+}
+
+/* Caret blink animation */
+@keyframes caret-blink {
+  0%, 70%, 100% {
+    opacity: 1;
+  }
+  20%, 50% {
+    opacity: 0;
+  }
+}
+
+/* Separator styles */
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted-foreground);
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .slot {
+    background-color: color-mix(in oklch, var(--input), transparent 70%);
+  }
+  
+  .slot[data-active="true"][aria-invalid="true"] {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--destructive), transparent 60%);
+  }
+}

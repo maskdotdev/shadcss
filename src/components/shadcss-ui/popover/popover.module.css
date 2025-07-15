@@ -1,0 +1,151 @@
+/* Popover Content Styles */
+.popoverContent {
+  background-color: var(--popover);
+  color: var(--popover-foreground);
+  z-index: 50;
+  width: 18rem;
+  transform-origin: var(--radix-popover-content-transform-origin);
+  border-radius: calc(var(--radius) - 2px);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  outline: none;
+}
+
+/* Animation States */
+.popoverContent[data-state="open"] {
+  animation: popoverIn 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.popoverContent[data-state="closed"] {
+  animation: popoverOut 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Side-specific slide animations */
+.popoverContent[data-side="bottom"] {
+  animation: popoverIn 150ms cubic-bezier(0.16, 1, 0.3, 1), slideInFromTop 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.popoverContent[data-side="left"] {
+  animation: popoverIn 150ms cubic-bezier(0.16, 1, 0.3, 1), slideInFromRight 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.popoverContent[data-side="right"] {
+  animation: popoverIn 150ms cubic-bezier(0.16, 1, 0.3, 1), slideInFromLeft 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.popoverContent[data-side="top"] {
+  animation: popoverIn 150ms cubic-bezier(0.16, 1, 0.3, 1), slideInFromBottom 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Closed state animations */
+.popoverContent[data-state="closed"][data-side="bottom"] {
+  animation: popoverOut 150ms cubic-bezier(0.16, 1, 0.3, 1), slideOutToTop 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.popoverContent[data-state="closed"][data-side="left"] {
+  animation: popoverOut 150ms cubic-bezier(0.16, 1, 0.3, 1), slideOutToRight 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.popoverContent[data-state="closed"][data-side="right"] {
+  animation: popoverOut 150ms cubic-bezier(0.16, 1, 0.3, 1), slideOutToLeft 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.popoverContent[data-state="closed"][data-side="top"] {
+  animation: popoverOut 150ms cubic-bezier(0.16, 1, 0.3, 1), slideOutToBottom 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Keyframe Animations */
+@keyframes popoverIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes popoverOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-0.5rem);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(0.5rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-0.5rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(0.5rem);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutToTop {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-0.5rem);
+  }
+}
+
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(0.5rem);
+  }
+}
+
+@keyframes slideOutToLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-0.5rem);
+  }
+}
+
+@keyframes slideOutToBottom {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(0.5rem);
+  }
+}

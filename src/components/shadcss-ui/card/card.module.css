@@ -1,0 +1,85 @@
+/* Card Component CSS Module */
+
+/* Base card styles */
+.card {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+/* Card header styles */
+.cardHeader {
+  container-type: inline-size;
+  container-name: card-header;
+  display: grid;
+  grid-auto-rows: min-content;
+  grid-template-rows: auto auto;
+  align-items: flex-start;
+  gap: 0.375rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.cardHeader:has([data-slot="card-action"]) {
+  grid-template-columns: 1fr auto;
+}
+
+.cardHeader.borderBottom {
+  padding-bottom: 1.5rem;
+}
+
+/* Card title styles */
+.cardTitle {
+  line-height: 1;
+  font-weight: 600;
+}
+
+/* Card description styles */
+.cardDescription {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+/* Card action styles */
+.cardAction {
+  grid-column-start: 2;
+  grid-row: span 2 / span 2;
+  grid-row-start: 1;
+  align-self: flex-start;
+  justify-self: flex-end;
+}
+
+/* Card content styles */
+.cardContent {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Card footer styles */
+.cardFooter {
+  display: flex;
+  align-items: center;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.cardFooter.borderTop {
+  padding-top: 1.5rem;
+}
+
+/* Utility classes for borders */
+.borderB {
+  border-bottom: 1px solid var(--border);
+}
+
+.borderT {
+  border-top: 1px solid var(--border);
+}

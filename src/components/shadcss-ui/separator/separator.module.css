@@ -1,0 +1,23 @@
+/* Separator Component CSS Module */
+
+/* Base component styles */
+.separator {
+  background-color: var(--border);
+  flex-shrink: 0;
+}
+
+/* Orientation variants */
+.horizontal {
+  height: 1px;
+  width: 100%;
+}
+
+.vertical {
+  height: 100%;
+  width: 1px;
+}
+
+/* CSS Custom Properties for theming */
+.separator {
+  --separator-bg: var(--border);
+}

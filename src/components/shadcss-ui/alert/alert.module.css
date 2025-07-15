@@ -1,0 +1,75 @@
+/* Alert Component Styles */
+
+.alert {
+  position: relative;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  display: grid;
+  grid-template-columns: 0 1fr;
+  gap: 0.125rem 0;
+  align-items: start;
+}
+
+.alert:has(> svg) {
+  grid-template-columns: calc(var(--spacing, 0.25rem) * 4) 1fr;
+  gap: 0.75rem 0.125rem;
+}
+
+.alert > svg {
+  width: 1rem;
+  height: 1rem;
+  transform: translateY(0.125rem);
+  color: currentColor;
+}
+
+/* Variant: Default */
+.variant-default {
+  background-color: var(--card);
+  color: var(--card-foreground);
+}
+
+/* Variant: Destructive */
+.variant-destructive {
+  color: var(--destructive);
+  background-color: var(--card);
+}
+
+.variant-destructive > svg {
+  color: currentColor;
+}
+
+.variant-destructive [data-slot="alert-description"] {
+  color: color-mix(in oklch, var(--destructive), transparent 10%);
+}
+
+/* Alert Title */
+.alertTitle {
+  grid-column-start: 2;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  min-height: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+/* Alert Description */
+.alertDescription {
+  color: var(--muted-foreground);
+  grid-column-start: 2;
+  display: grid;
+  justify-items: start;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.alertDescription p {
+  line-height: 1.625;
+}

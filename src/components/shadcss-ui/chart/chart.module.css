@@ -1,0 +1,189 @@
+/* Chart Container */
+.chartContainer {
+  display: flex;
+  aspect-ratio: 16 / 9;
+  justify-content: center;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+/* Recharts specific styling */
+.chartContainer :global(.recharts-cartesian-axis-tick) text {
+  fill: var(--muted-foreground);
+}
+
+.chartContainer :global(.recharts-cartesian-grid) line[stroke='#ccc'] {
+  stroke: var(--border);
+}
+
+.chartContainer :global(.recharts-curve.recharts-tooltip-cursor) {
+  stroke: var(--border);
+}
+
+.chartContainer :global(.recharts-polar-grid) [stroke='#ccc'] {
+  stroke: var(--border);
+}
+
+.chartContainer :global(.recharts-radial-bar-background-sector) {
+  fill: var(--muted);
+}
+
+.chartContainer :global(.recharts-rectangle.recharts-tooltip-cursor) {
+  fill: var(--muted);
+}
+
+.chartContainer :global(.recharts-reference-line) [stroke='#ccc'] {
+  stroke: var(--border);
+}
+
+.chartContainer :global(.recharts-dot)[stroke='#fff'] {
+  stroke: transparent;
+}
+
+.chartContainer :global(.recharts-layer) {
+  outline: none;
+}
+
+.chartContainer :global(.recharts-sector) {
+  outline: none;
+}
+
+.chartContainer :global(.recharts-sector)[stroke='#fff'] {
+  stroke: transparent;
+}
+
+.chartContainer :global(.recharts-surface) {
+  outline: none;
+}
+
+/* Chart Tooltip */
+.chartTooltip {
+  display: grid;
+  min-width: 8rem;
+  align-items: start;
+  gap: 0.375rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  padding: 0.375rem 0.625rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.chartTooltipLabel {
+  font-weight: 500;
+}
+
+.chartTooltipContent {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.chartTooltipItem {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.chartTooltipItem svg {
+  color: var(--muted-foreground);
+  height: 0.625rem;
+  width: 0.625rem;
+}
+
+.chartTooltipItemDot {
+  align-items: center;
+}
+
+.chartTooltipIndicator {
+  flex-shrink: 0;
+  border-radius: 2px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+}
+
+.chartTooltipIndicatorDot {
+  height: 0.625rem;
+  width: 0.625rem;
+}
+
+.chartTooltipIndicatorLine {
+  width: 0.25rem;
+}
+
+.chartTooltipIndicatorDashed {
+  width: 0;
+  border-width: 1.5px;
+  border-style: dashed;
+  background-color: transparent;
+  margin: 0.125rem 0;
+}
+
+.chartTooltipItemContent {
+  display: flex;
+  flex: 1 1 0%;
+  justify-content: space-between;
+  line-height: 1;
+}
+
+.chartTooltipItemContentNested {
+  align-items: end;
+}
+
+.chartTooltipItemContentCenter {
+  align-items: center;
+}
+
+.chartTooltipItemDetails {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.chartTooltipItemName {
+  color: var(--muted-foreground);
+}
+
+.chartTooltipItemValue {
+  color: var(--foreground);
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Chart Legend */
+.chartLegend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.chartLegendTop {
+  padding-bottom: 0.75rem;
+}
+
+.chartLegendBottom {
+  padding-top: 0.75rem;
+}
+
+.chartLegendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.chartLegendItem svg {
+  color: var(--muted-foreground);
+  height: 0.75rem;
+  width: 0.75rem;
+}
+
+.chartLegendIndicator {
+  height: 0.5rem;
+  width: 0.5rem;
+  flex-shrink: 0;
+  border-radius: 2px;
+}

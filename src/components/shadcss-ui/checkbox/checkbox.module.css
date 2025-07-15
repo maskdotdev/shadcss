@@ -1,0 +1,71 @@
+/* Checkbox component styles */
+.checkbox {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: 1px solid var(--input);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  transition: box-shadow 0.15s ease-in-out;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Dark mode background */
+@media (prefers-color-scheme: dark) {
+  .checkbox {
+    background-color: color-mix(in oklch, var(--input), transparent 70%);
+  }
+}
+
+/* Checked state */
+.checkbox[data-state="checked"] {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+@media (prefers-color-scheme: dark) {
+  .checkbox[data-state="checked"] {
+    background-color: var(--primary);
+  }
+}
+
+/* Focus visible state */
+.checkbox:focus-visible {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring), transparent 50%);
+}
+
+/* Invalid state */
+.checkbox[aria-invalid="true"] {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--destructive), transparent 80%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .checkbox[aria-invalid="true"] {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--destructive), transparent 60%);
+  }
+}
+
+/* Disabled state */
+.checkbox:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Indicator styles */
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+  transition: none;
+}
+
+/* Check icon styles */
+.checkIcon {
+  width: 0.875rem;
+  height: 0.875rem;
+}

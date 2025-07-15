@@ -1,0 +1,111 @@
+/* Table Container */
+.tableContainer {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Table Base */
+.table {
+  width: 100%;
+  caption-side: bottom;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+/* Table Header */
+.tableHeader {
+  /* Header-specific styles handled by row borders */
+}
+
+.tableHeader tr {
+  border-bottom: 1px solid var(--border);
+}
+
+/* Table Body */
+.tableBody {
+  /* Body-specific styles handled by row borders */
+}
+
+.tableBody tr:last-child {
+  border-bottom: 0;
+}
+
+/* Table Footer */
+.tableFooter {
+  background-color: var(--muted);
+  border-top: 1px solid var(--border);
+  font-weight: 500;
+}
+
+.tableFooter > tr:last-child {
+  border-bottom: 0;
+}
+
+/* Table Row */
+.tableRow {
+  border-bottom: 1px solid var(--border);
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.tableRow:hover {
+  background-color: var(--muted);
+}
+
+.tableRow[data-state="selected"] {
+  background-color: var(--muted);
+}
+
+/* Table Head */
+.tableHead {
+  color: var(--foreground);
+  height: 2.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tableHead:has([role="checkbox"]) {
+  padding-right: 0;
+}
+
+.tableHead [role="checkbox"] {
+  transform: translateY(2px);
+}
+
+/* Table Cell */
+.tableCell {
+  padding: 0.5rem;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.tableCell:has([role="checkbox"]) {
+  padding-right: 0;
+}
+
+.tableCell [role="checkbox"] {
+  transform: translateY(2px);
+}
+
+/* Table Caption */
+.tableCaption {
+  color: var(--muted-foreground);
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+/* Striped rows variant */
+.tableRowStriped:nth-child(even) {
+  background-color: var(--muted);
+}
+
+.tableRowStriped:nth-child(even):hover {
+  background-color: var(--muted);
+}

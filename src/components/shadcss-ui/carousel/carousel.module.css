@@ -1,0 +1,140 @@
+/* Carousel Root */
+.carousel {
+  position: relative;
+}
+
+/* Carousel Content Wrapper */
+.carouselContentWrapper {
+  overflow: hidden;
+}
+
+/* Carousel Content */
+.carouselContent {
+  display: flex;
+}
+
+.carouselContentHorizontal {
+  margin-left: -1rem;
+}
+
+.carouselContentVertical {
+  flex-direction: column;
+  margin-top: -1rem;
+}
+
+/* Carousel Item */
+.carouselItem {
+  min-width: 0;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: 100%;
+}
+
+.carouselItemHorizontal {
+  padding-left: 1rem;
+}
+
+.carouselItemVertical {
+  padding-top: 1rem;
+}
+
+/* Carousel Navigation Buttons */
+.carouselButton {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+}
+
+/* Previous Button */
+.carouselPrevious {
+  /* Base positioning for previous button */
+}
+
+.carouselPreviousHorizontal {
+  top: 50%;
+  left: -3rem;
+  transform: translateY(-50%);
+}
+
+.carouselPreviousVertical {
+  top: -3rem;
+  left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+/* Next Button */
+.carouselNext {
+  /* Base positioning for next button */
+}
+
+.carouselNextHorizontal {
+  top: 50%;
+  right: -3rem;
+  transform: translateY(-50%);
+}
+
+.carouselNextVertical {
+  bottom: -3rem;
+  left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+/* Slide Transitions */
+.carouselContent {
+  transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .carouselPreviousHorizontal {
+    left: -2rem;
+  }
+  
+  .carouselNextHorizontal {
+    right: -2rem;
+  }
+  
+  .carouselPreviousVertical {
+    top: -2rem;
+  }
+  
+  .carouselNextVertical {
+    bottom: -2rem;
+  }
+}
+
+/* Indicator Dots (optional enhancement) */
+.carouselIndicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.carouselIndicator {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--muted);
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+.carouselIndicator:hover {
+  background-color: var(--muted-foreground);
+}
+
+.carouselIndicatorActive {
+  background-color: var(--primary);
+}
+
+/* Accessibility */
+.carousel:focus-within .carouselButton {
+  opacity: 1;
+}
+
+.carouselButton:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}

@@ -1,0 +1,280 @@
+/* Drawer Component Styles */
+
+/* Drawer Overlay */
+.drawerOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background-color: rgb(0 0 0 / 0.5);
+}
+
+.drawerOverlay[data-state="open"] {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.drawerOverlay[data-state="closed"] {
+  animation: fadeOut 0.2s ease-out;
+}
+
+/* Drawer Content */
+.drawerContent {
+  background-color: var(--background);
+  position: fixed;
+  z-index: 50;
+  display: flex;
+  height: auto;
+  flex-direction: column;
+}
+
+/* Direction-specific positioning */
+.drawerContent[data-vaul-drawer-direction="top"] {
+  left: 0;
+  right: 0;
+  top: 0;
+  margin-bottom: 6rem;
+  max-height: 80vh;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-width: 1px;
+}
+
+.drawerContent[data-vaul-drawer-direction="bottom"] {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-top: 6rem;
+  max-height: 80vh;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-top-width: 1px;
+}
+
+.drawerContent[data-vaul-drawer-direction="right"] {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 75%;
+  border-left-width: 1px;
+}
+
+.drawerContent[data-vaul-drawer-direction="left"] {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 75%;
+  border-right-width: 1px;
+}
+
+/* Drawer Handle */
+.drawerHandle {
+  background-color: var(--muted);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  display: none;
+  height: 0.5rem;
+  width: 100px;
+  flex-shrink: 0;
+  border-radius: 9999px;
+}
+
+.drawerContent[data-vaul-drawer-direction="bottom"] .drawerHandle {
+  display: block;
+}
+
+/* Drawer Header */
+.drawerHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding: 1rem;
+}
+
+.drawerContent[data-vaul-drawer-direction="bottom"] .drawerHeader,
+.drawerContent[data-vaul-drawer-direction="top"] .drawerHeader {
+  text-align: center;
+}
+
+/* Drawer Footer */
+.drawerFooter {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+/* Drawer Title */
+.drawerTitle {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+/* Drawer Description */
+.drawerDescription {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+/* Responsive Styles */
+@media (min-width: 640px) {
+  .drawerContent[data-vaul-drawer-direction="right"] {
+    max-width: 24rem;
+  }
+  
+  .drawerContent[data-vaul-drawer-direction="left"] {
+    max-width: 24rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .drawerHeader {
+    gap: 0.375rem;
+    text-align: left;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToTop {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes slideOutToBottom {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes slideOutToLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* Direction-specific animations */
+.drawerContent[data-vaul-drawer-direction="top"][data-state="open"] {
+  animation: slideInFromTop 0.3s ease-out;
+}
+
+.drawerContent[data-vaul-drawer-direction="top"][data-state="closed"] {
+  animation: slideOutToTop 0.3s ease-out;
+}
+
+.drawerContent[data-vaul-drawer-direction="bottom"][data-state="open"] {
+  animation: slideInFromBottom 0.3s ease-out;
+}
+
+.drawerContent[data-vaul-drawer-direction="bottom"][data-state="closed"] {
+  animation: slideOutToBottom 0.3s ease-out;
+}
+
+.drawerContent[data-vaul-drawer-direction="left"][data-state="open"] {
+  animation: slideInFromLeft 0.3s ease-out;
+}
+
+.drawerContent[data-vaul-drawer-direction="left"][data-state="closed"] {
+  animation: slideOutToLeft 0.3s ease-out;
+}
+
+.drawerContent[data-vaul-drawer-direction="right"][data-state="open"] {
+  animation: slideInFromRight 0.3s ease-out;
+}
+
+.drawerContent[data-vaul-drawer-direction="right"][data-state="closed"] {
+  animation: slideOutToRight 0.3s ease-out;
+}
+
+/* Drag interaction styles */
+.drawerContent {
+  transition: transform 0.2s ease-out;
+}
+
+.drawerContent[data-vaul-dragging="true"] {
+  transition: none;
+}
+
+/* Focus and accessibility */
+.drawerContent:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Border styles */
+.drawerContent {
+  border-color: var(--border);
+}

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/shadcss-ui/sonner";
+import { ThemeSwitch } from "@/components/theme-switch";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +30,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          defaultTheme="system"
+          storageKey="shadcss-ui-theme"
+        >
+          {children}
+          <div className="fixed top-4 right-4 z-50">
+            <ThemeSwitch />
+          </div>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

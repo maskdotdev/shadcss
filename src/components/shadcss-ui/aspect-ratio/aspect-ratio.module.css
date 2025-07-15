@@ -1,0 +1,21 @@
+/* Aspect Ratio Component CSS Module */
+
+/* Base component styles */
+.aspectRatio {
+  /* The aspect ratio is handled by the Radix UI component itself */
+  /* This provides a base container for any additional styling */
+  position: relative;
+  width: 100%;
+}
+
+/* Responsive behavior */
+@media (min-width: 768px) {
+  .aspectRatio {
+    /* Maintain responsive behavior */
+  }
+}
+
+/* CSS Custom Properties for theming */
+.aspectRatio {
+  --aspect-ratio-bg: var(--background);
+}

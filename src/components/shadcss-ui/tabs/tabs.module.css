@@ -1,0 +1,89 @@
+/* Tabs Component Styles */
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Tabs List Styles */
+.tabsList {
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+  display: inline-flex;
+  height: 2.25rem;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  padding: 3px;
+}
+
+/* Tabs Trigger Styles */
+.tabsTrigger {
+  color: var(--foreground);
+  display: inline-flex;
+  height: calc(100% - 1px);
+  flex: 1 1 0%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  border-radius: 0.375rem;
+  border: 1px solid transparent;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  outline: 1px solid transparent;
+}
+
+.tabsTrigger:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.tabsTrigger:focus-visible {
+  border-color: var(--ring);
+  outline-color: var(--ring);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+.tabsTrigger[data-state="active"] {
+  background-color: var(--background);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+/* Dark mode specific styles */
+@media (prefers-color-scheme: dark) {
+  .tabsTrigger {
+    color: var(--muted-foreground);
+  }
+  
+  .tabsTrigger[data-state="active"] {
+    color: var(--foreground);
+    border-color: var(--input);
+    background-color: var(--input);
+  }
+}
+
+/* SVG icon styles */
+.tabsTrigger :global(svg) {
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.tabsTrigger :global(svg:not([class*='size-'])) {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Tabs Content Styles */
+.tabsContent {
+  flex: 1 1 0%;
+  outline: none;
+}

@@ -1,0 +1,399 @@
+/* Context Menu Component Styles */
+
+/* Content */
+.content {
+  background-color: var(--popover);
+  color: var(--popover-foreground);
+  z-index: 50;
+  max-height: var(--radix-context-menu-content-available-height);
+  min-width: 8rem;
+  transform-origin: var(--radix-context-menu-content-transform-origin);
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 0.375rem;
+  border: 1px solid var(--border);
+  padding: 0.25rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Animation states for content */
+.content[data-state="open"] {
+  animation: fadeIn 0.2s ease-out, zoomIn 0.2s ease-out;
+}
+
+.content[data-state="closed"] {
+  animation: fadeOut 0.15s ease-in, zoomOut 0.15s ease-in;
+}
+
+/* Side-specific slide animations */
+.content[data-side="bottom"] {
+  animation: fadeIn 0.2s ease-out, zoomIn 0.2s ease-out, slideInFromTop 0.2s ease-out;
+}
+
+.content[data-side="left"] {
+  animation: fadeIn 0.2s ease-out, zoomIn 0.2s ease-out, slideInFromRight 0.2s ease-out;
+}
+
+.content[data-side="right"] {
+  animation: fadeIn 0.2s ease-out, zoomIn 0.2s ease-out, slideInFromLeft 0.2s ease-out;
+}
+
+.content[data-side="top"] {
+  animation: fadeIn 0.2s ease-out, zoomIn 0.2s ease-out, slideInFromBottom 0.2s ease-out;
+}
+
+/* Menu Item */
+.item {
+  position: relative;
+  display: flex;
+  cursor: default;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.125rem;
+  padding: 0.375rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  user-select: none;
+}
+
+.item:focus {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.item[data-disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.item[data-inset] {
+  padding-left: 2rem;
+}
+
+/* Item variants */
+.item[data-variant="destructive"] {
+  color: var(--destructive);
+}
+
+.item[data-variant="destructive"]:focus {
+  background-color: var(--destructive);
+  color: var(--destructive);
+}
+
+@media (prefers-color-scheme: dark) {
+  .item[data-variant="destructive"]:focus {
+    background-color: var(--destructive);
+  }
+}
+
+.item[data-variant="destructive"] svg:not([class*="text-"]) {
+  color: var(--destructive) !important;
+}
+
+/* SVG icons in items */
+.item svg:not([class*="text-"]) {
+  color: var(--muted-foreground);
+}
+
+.item svg {
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.item svg:not([class*="size-"]) {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Checkbox Item */
+.checkboxItem {
+  position: relative;
+  display: flex;
+  cursor: default;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.125rem;
+  padding: 0.375rem 0.5rem 0.375rem 2rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  user-select: none;
+}
+
+.checkboxItem:focus {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.checkboxItem[data-disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.checkboxItem svg {
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.checkboxItem svg:not([class*="size-"]) {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Checkbox indicator */
+.checkboxIndicator {
+  pointer-events: none;
+  position: absolute;
+  left: 0.5rem;
+  display: flex;
+  width: 0.875rem;
+  height: 0.875rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkboxIndicator svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Radio Item */
+.radioItem {
+  position: relative;
+  display: flex;
+  cursor: default;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.125rem;
+  padding: 0.375rem 0.5rem 0.375rem 2rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  user-select: none;
+}
+
+.radioItem:focus {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.radioItem[data-disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.radioItem svg {
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.radioItem svg:not([class*="size-"]) {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Radio indicator */
+.radioIndicator {
+  pointer-events: none;
+  position: absolute;
+  left: 0.5rem;
+  display: flex;
+  width: 0.875rem;
+  height: 0.875rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.radioIndicator svg {
+  width: 0.5rem;
+  height: 0.5rem;
+  fill: currentColor;
+}
+
+/* Label */
+.label {
+  color: var(--foreground);
+  padding: 0.375rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+}
+
+.label[data-inset] {
+  padding-left: 2rem;
+}
+
+/* Separator */
+.separator {
+  background-color: var(--border);
+  margin: 0.25rem -0.25rem;
+  height: 1px;
+}
+
+/* Shortcut */
+.shortcut {
+  color: var(--muted-foreground);
+  margin-left: auto;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.1em;
+}
+
+/* Sub Trigger */
+.subTrigger {
+  display: flex;
+  cursor: default;
+  align-items: center;
+  border-radius: 0.125rem;
+  padding: 0.375rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  user-select: none;
+}
+
+.subTrigger:focus {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.subTrigger[data-state="open"] {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.subTrigger[data-inset] {
+  padding-left: 2rem;
+}
+
+.subTrigger svg {
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.subTrigger svg:not([class*="size-"]) {
+  width: 1rem;
+  height: 1rem;
+}
+
+.subTrigger .chevron {
+  margin-left: auto;
+}
+
+/* Sub Content */
+.subContent {
+  background-color: var(--popover);
+  color: var(--popover-foreground);
+  z-index: 50;
+  min-width: 8rem;
+  transform-origin: var(--radix-context-menu-content-transform-origin);
+  overflow: hidden;
+  border-radius: 0.375rem;
+  border: 1px solid var(--border);
+  padding: 0.25rem;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* Animation states for sub content */
+.subContent[data-state="open"] {
+  animation: fadeIn 0.2s ease-out, zoomIn 0.2s ease-out;
+}
+
+.subContent[data-state="closed"] {
+  animation: fadeOut 0.15s ease-in, zoomOut 0.15s ease-in;
+}
+
+/* Side-specific slide animations for sub content */
+.subContent[data-side="bottom"] {
+  animation: fadeIn 0.2s ease-out, zoomIn 0.2s ease-out, slideInFromTop 0.2s ease-out;
+}
+
+.subContent[data-side="left"] {
+  animation: fadeIn 0.2s ease-out, zoomIn 0.2s ease-out, slideInFromRight 0.2s ease-out;
+}
+
+.subContent[data-side="right"] {
+  animation: fadeIn 0.2s ease-out, zoomIn 0.2s ease-out, slideInFromLeft 0.2s ease-out;
+}
+
+.subContent[data-side="top"] {
+  animation: fadeIn 0.2s ease-out, zoomIn 0.2s ease-out, slideInFromBottom 0.2s ease-out;
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.95);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-0.5rem);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(0.5rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-0.5rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(0.5rem);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

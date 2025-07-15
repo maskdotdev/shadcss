@@ -1,0 +1,121 @@
+/* Avatar Root Component */
+.avatar {
+  position: relative;
+  display: flex;
+  width: 2rem; /* size-8 */
+  height: 2rem; /* size-8 */
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 9999px; /* rounded-full */
+}
+
+/* Avatar Image Component */
+.avatarImage {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  height: 100%;
+}
+
+/* Avatar Fallback Component */
+.avatarFallback {
+  background-color: var(--muted);
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px; /* rounded-full */
+}
+
+/* Size Variants */
+.size-sm {
+  width: 1.5rem; /* size-6 */
+  height: 1.5rem; /* size-6 */
+}
+
+.size-md {
+  width: 2rem; /* size-8 - default */
+  height: 2rem; /* size-8 */
+}
+
+.size-lg {
+  width: 2.5rem; /* size-10 */
+  height: 2.5rem; /* size-10 */
+}
+
+.size-xl {
+  width: 3rem; /* size-12 */
+  height: 3rem; /* size-12 */
+}
+
+.size-2xl {
+  width: 4rem; /* size-16 */
+  height: 4rem; /* size-16 */
+}
+
+/* Loading States */
+.avatarImage[data-state="loading"] {
+  opacity: 0;
+}
+
+.avatarImage[data-state="loaded"] {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.avatarFallback[data-state="visible"] {
+  opacity: 1;
+}
+
+.avatarFallback[data-state="hidden"] {
+  opacity: 0;
+}
+
+/* Hover Effects */
+.avatar:hover .avatarImage {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Focus States for Accessibility */
+.avatar:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Status Indicator Support */
+.avatar[data-status="online"]::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: #10b981; /* green-500 */
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+.avatar[data-status="offline"]::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: #6b7280; /* gray-500 */
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+.avatar[data-status="busy"]::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: #ef4444; /* red-500 */
+  border: 2px solid white;
+  border-radius: 50%;
+}

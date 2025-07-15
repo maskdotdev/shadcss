@@ -1,0 +1,346 @@
+/* Calendar Component CSS Module */
+
+/* Calendar root styles */
+.calendar {
+  --cell-size: 2rem;
+  background-color: var(--background);
+  padding: 0.75rem;
+  position: relative;
+}
+
+/* Card and popover content adjustments */
+.calendar:where([data-slot="card-content"] *) {
+  background-color: transparent;
+}
+
+.calendar:where([data-slot="popover-content"] *) {
+  background-color: transparent;
+}
+
+/* RTL support for navigation buttons */
+.calendar:where([dir="rtl"] *) .buttonNext svg {
+  transform: rotate(180deg);
+}
+
+.calendar:where([dir="rtl"] *) .buttonPrevious svg {
+  transform: rotate(180deg);
+}
+
+/* Root container */
+.root {
+  width: fit-content;
+}
+
+/* Months container */
+.months {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .months {
+    flex-direction: row;
+  }
+}
+
+/* Individual month */
+.month {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+/* Navigation container */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  justify-content: space-between;
+}
+
+/* Navigation buttons */
+.buttonPrevious,
+.buttonNext {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  padding: 0;
+  user-select: none;
+}
+
+.buttonPrevious[aria-disabled="true"],
+.buttonNext[aria-disabled="true"] {
+  opacity: 0.5;
+}
+
+/* Month caption */
+.monthCaption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--cell-size);
+  width: 100%;
+  padding-left: var(--cell-size);
+  padding-right: var(--cell-size);
+}
+
+/* Dropdowns container */
+.dropdowns {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  justify-content: center;
+  height: var(--cell-size);
+  gap: 0.375rem;
+}
+
+/* Dropdown root */
+.dropdownRoot {
+  position: relative;
+  border: 1px solid var(--input);
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.dropdownRoot:has(:focus) {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring), transparent 50%);
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  background-color: var(--popover);
+  inset: 0;
+  opacity: 0;
+}
+
+/* Caption label */
+.captionLabel {
+  user-select: none;
+  font-weight: 500;
+}
+
+.captionLabelText {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.captionLabelButton {
+  border-radius: 0.375rem;
+  padding-left: 0.5rem;
+  padding-right: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  height: 2rem;
+}
+
+.captionLabelButton svg {
+  color: var(--muted-foreground);
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Weekdays header */
+.weekdays {
+  display: flex;
+}
+
+.weekday {
+  color: var(--muted-foreground);
+  border-radius: 0.375rem;
+  flex: 1;
+  font-weight: 400;
+  font-size: 0.8rem;
+  user-select: none;
+}
+
+/* Week row */
+.week {
+  display: flex;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* Week number header */
+.weekNumberHeader {
+  user-select: none;
+  width: var(--cell-size);
+}
+
+/* Week number */
+.weekNumber {
+  font-size: 0.8rem;
+  user-select: none;
+  color: var(--muted-foreground);
+}
+
+.weekNumberCell {
+  display: flex;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Day cell */
+.day {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  text-align: center;
+  user-select: none;
+  aspect-ratio: 1;
+}
+
+.day:first-child[data-selected="true"] button {
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
+
+.day:last-child[data-selected="true"] button {
+  border-top-right-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+}
+
+/* Range styles */
+.rangeStart {
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+  background-color: var(--accent);
+}
+
+.rangeMiddle {
+  border-radius: 0;
+}
+
+.rangeEnd {
+  border-top-right-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+  background-color: var(--accent);
+}
+
+/* Today styles */
+.today {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  border-radius: 0.375rem;
+}
+
+.today[data-selected="true"] {
+  border-radius: 0;
+}
+
+/* Outside month days */
+.outside {
+  color: var(--muted-foreground);
+}
+
+.outside[aria-selected="true"] {
+  color: var(--muted-foreground);
+}
+
+/* Disabled days */
+.disabled {
+  color: var(--muted-foreground);
+  opacity: 0.5;
+}
+
+/* Hidden days */
+.hidden {
+  visibility: hidden;
+}
+
+/* Day button styles */
+.dayButton {
+  display: flex;
+  aspect-ratio: 1;
+  width: 100%;
+  min-width: var(--cell-size);
+  flex-direction: column;
+  gap: 0.25rem;
+  line-height: 1;
+  font-weight: 400;
+}
+
+/* Day button states */
+.dayButton[data-selected-single="true"] {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.dayButton[data-range-middle="true"] {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.dayButton[data-range-start="true"],
+.dayButton[data-range-end="true"] {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.dayButton[data-range-end="true"] {
+  border-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+}
+
+.dayButton[data-range-middle="true"] {
+  border-radius: 0;
+}
+
+.dayButton[data-range-start="true"] {
+  border-radius: 0.375rem;
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
+
+/* Focused day styles */
+.day[data-focused="true"] .dayButton {
+  position: relative;
+  z-index: 10;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring), transparent 50%);
+}
+
+/* Day button content */
+.dayButton span {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  opacity: 0.7;
+}
+
+/* Chevron icon */
+.chevron {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Dark mode hover adjustments */
+@media (prefers-color-scheme: dark) {
+  .dayButton:hover {
+    color: var(--accent-foreground);
+  }
+}

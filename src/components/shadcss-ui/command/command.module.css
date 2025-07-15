@@ -1,0 +1,247 @@
+/* Command Component Styles */
+
+.command {
+  background-color: var(--popover);
+  color: var(--popover-foreground);
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: calc(var(--radius) - 2px);
+}
+
+/* Command Dialog Styles */
+.commandDialog {
+  overflow: hidden;
+  padding: 0;
+}
+
+.commandDialogCommand {
+  /* Complex selector styles for command dialog */
+}
+
+.commandDialogCommand :global([cmdk-group-heading]) {
+  color: var(--muted-foreground);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-weight: 500;
+}
+
+.commandDialogCommand :global([cmdk-group]) {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.commandDialogCommand :global([cmdk-group]:not([hidden]) ~ [cmdk-group]) {
+  padding-top: 0;
+}
+
+.commandDialogCommand :global([cmdk-input-wrapper]) {
+  height: 3rem;
+}
+
+.commandDialogCommand :global([cmdk-input-wrapper] svg) {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.commandDialogCommand :global([cmdk-input]) {
+  height: 3rem;
+}
+
+.commandDialogCommand :global([cmdk-item]) {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.commandDialogCommand :global([cmdk-item] svg) {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+/* Command Input Wrapper */
+.commandInputWrapper {
+  display: flex;
+  height: 2.25rem;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom-width: 1px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.commandInputIcon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+/* Command Input */
+.commandInput {
+  display: flex;
+  height: 2.5rem;
+  width: 100%;
+  border-radius: calc(var(--radius) - 2px);
+  background-color: transparent;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.commandInput::placeholder {
+  color: var(--muted-foreground);
+}
+
+.commandInput:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Command List */
+.commandList {
+  max-height: 300px;
+  scroll-padding-top: 0.25rem;
+  scroll-padding-bottom: 0.25rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Command Empty */
+.commandEmpty {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+/* Command Group */
+.commandGroup {
+  color: var(--foreground);
+  overflow: hidden;
+  padding: 0.25rem;
+}
+
+.commandGroup :global([cmdk-group-heading]) {
+  color: var(--muted-foreground);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+}
+
+/* Command Separator */
+.commandSeparator {
+  background-color: var(--border);
+  margin-left: -0.25rem;
+  margin-right: -0.25rem;
+  height: 1px;
+}
+
+/* Command Item */
+.commandItem {
+  position: relative;
+  display: flex;
+  cursor: default;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: calc(var(--radius) - 4px);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  user-select: none;
+}
+
+.commandItem[data-selected="true"] {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.commandItem[data-disabled="true"] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.commandItem svg:not([class*="text-"]) {
+  color: var(--muted-foreground);
+}
+
+.commandItem svg {
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.commandItem svg:not([class*="size-"]) {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Command Shortcut */
+.commandShortcut {
+  color: var(--muted-foreground);
+  margin-left: auto;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.1em;
+}
+
+/* Responsive Styles */
+@media (min-width: 640px) {
+  .commandDialogCommand :global([data-slot="command-input-wrapper"]) {
+    height: 3rem;
+  }
+}
+
+/* Focus and Hover States */
+.commandItem:hover:not([data-disabled="true"]) {
+  background-color: var(--accent);
+  opacity: 0.5;
+}
+
+.commandInput:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Animation for smooth transitions */
+.commandItem {
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.commandList {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.commandList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.commandList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.commandList::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 3px;
+}
+
+.commandList::-webkit-scrollbar-thumb:hover {
+  background-color: var(--border);
+  opacity: 0.8;
+}
