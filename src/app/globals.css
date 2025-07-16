@@ -161,4 +161,50 @@
   body {
     @apply bg-background text-foreground;
   }
+}/* C
+ode Block Styles */
+.code-block {
+  font-family: var(--font-mono);
+}
+
+.code-block pre {
+  counter-reset: line;
+}
+
+.code-block pre [data-line] {
+  counter-increment: line;
+}
+
+.code-block pre [data-line]::before {
+  content: counter(line);
+  display: inline-block;
+  width: 2rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+  user-select: none;
+}
+
+.code-block .highlighted-line {
+  background-color: hsl(var(--accent) / 0.1);
+  border-left: 3px solid hsl(var(--accent));
+  padding-left: 1rem;
+  margin-left: -1rem;
+}
+
+/* Shiki theme overrides */
+.shiki {
+  background-color: transparent !important;
+}
+
+.shiki code {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Dark mode adjustments */
+.dark .shiki {
+  color-scheme: dark;
 }
